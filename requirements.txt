@@ -14,5 +14,3 @@ tomli~=2.0.1
 torchcrepe~=0.0.20
 uvicorn~=0.23.0
 structlog~=23.1.0
-dvc==3.49.0
-dvc_gdrive==3.0.1
