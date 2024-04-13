@@ -13,9 +13,9 @@ from multiprocessing import cpu_count
 
 def use_fp32_config():
     for config_file in ["32k.json", "40k.json", "48k.json"]:
-        with open(f"configs/{config_file}", "r") as f:
+        with open(f"app/rvc/configs/{config_file}", "r") as f:
             strr = f.read().replace("true", "false")
-        with open(f"configs/{config_file}", "w") as f:
+        with open(f"app/rvc/configs/{config_file}", "w") as f:
             f.write(strr)
     with open("trainset_preprocess_pipeline_print.py", "r") as f:
         strr = f.read().replace("3.7", "3.0")
