@@ -5,10 +5,10 @@ import time
 url = "http://127.0.0.1:8000/generate"
 
 payload = json.dumps({
-  "speaker_name": "speaker3",
-  "input_text": "Are you mad? The way you've betrayed me is beyond comprehension, a slap in the face that's left me boiling with an anger so intense it's as if you've thrown gasoline on a fire, utterly destroying any trust that was left.",
-  "emotion": "Dull",
-  "speed": 1.0
+  "speaker_name": "freeman",
+  "input_text": "Welcome to the Virtual Reality AI Museum, where technology and history intertwine to offer an immersive journey through the realms of artificial intelligence (AI). As you step into this digital sanctuary, prepare to be transported into a realm where the past, present, and future of AI converge.",
+  "emotion": "Calm",
+  "speed": 0.5
 })
 headers = {
   'Content-Type': 'application/json'
