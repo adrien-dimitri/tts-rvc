@@ -12,20 +12,59 @@ Coqui is a text-to-speech framework (vocoder and encoder), but cloning your own 
 
 How to use Coqui + RVC api?
 
-```python
-https://github.com/skshadan/TTS-RVC-API.git
-```
-```python
-python -m venv .venv
-. .venv/bin/activate
-pip install -r requirements.txt
-pip install TTS
-python -m uvicorn app.main:app
-```
-Now update `config.toml` with relative paths
-config `model_dir` path or set a `speaker_name` in the request body
+1. **Clone the repository**
+
+    ```bash
+    git clone https://github.com/adrien-dimitri/tts-rvc
+    ```
+
+2. **(Recommended) Create and Activate a Virtual Environment:**
+
+   - **On Windows:**
+
+     ```bash
+     python -m venv .venv
+     .venv\Scripts\activate
+     ```
+
+   - **On macOS and Linux:**
+
+     ```bash
+     virtualenv <venv_name>
+     source <venv_name>/bin/activate
+     ```
+
+3. **Install the required packages:**
+
+    ```bash
+    pip install -r requirements.txt
+    pip install TTS
+    pip install dvc dvc-gdrive
+    ```
+
+4. **Import the models using DVC:**
+
+    ```bash
+    dvc pull
+    ```
+
+5. **Update the `config.toml` file:**
+
+    - Update the `model_dir` path to the directory where the RVC v2 model is stored.
+    - Or set a `speaker_name` in the request body.
+
+
+6. **Run the server:**
+
+    ```bash
+    python -m uvicorn app.main:app
+    ```
+
+
+## Information
 
 Where the RVC v2 model is mounted on the container at:
+
 ```python
   /
 └── models
@@ -34,25 +73,24 @@ Where the RVC v2 model is mounted on the container at:
           └── speaker1.index
 ```
 
-Now Run this 
-```python
-  python -m uvicorn app.main:app
-```
+
 ## POST REQUEST
 
-```python
-  http://localhost:8000/generate
+```bash
+http://localhost:8000/generate
 ```
+
 ```python
-    emotions : happy,sad,angry,dull
-    speed = 1.0 - 2.0
+emotions : happy,sad,angry,dull
+speed = 1.0 - 2.0
 ```
+
 ```python
-  {
-  "speaker_name": "speaker3",
-  "input_text": "Hey there! Welcome to the world",
-  "emotion": "Surprise",
-  "speed": 1.0
+{
+"speaker_name": "speaker3",
+"input_text": "Hey there! Welcome to the world",
+"emotion": "Surprise",
+"speed": 1.0
 }
 ```
    
@@ -93,7 +131,36 @@ if response.status_code == 200:
 else:
     print("Error:", response.text)
 ```
-## Feedback
 
-If you have any feedback, issues please reach out to shadankhantech@gmail.com
 
+## Troubleshooting
+
+If you encounter an error related to CUDA when using the TTS package, it may indicate that CUDA is not installed on your system. Here's what you can do to resolve the issue:
+
+### Error Message:
+
+```bash
+ ...
+  File ".venv/lib/python3.10/site-packages/TTS/api.py", line 74, in __init__
+    self.load_tts_model_by_name(model_name, gpu)
+  File ".venv/lib/python3.10/site-packages/TTS/api.py", line 177, in load_tts_model_by_name
+    self.synthesizer = Synthesizer(
+  File ".venv/lib/python3.10/site-packages/TTS/utils/synthesizer.py", line 90, in __init__
+    assert torch.cuda.is_available(), "CUDA is not availabe on this machine."
+AssertionError: CUDA is not availabe on this machine.
+```
+The path may vary depending on the version of Python and the environment you are using.
+
+A very simple solution is to edit a file in the TTS Package:
+
+1. Navigate to the TTS package directory.
+2. Locate the `api.py` file.
+3. line 187 should look like this 
+    ```python
+      ...
+      encoder_config=None,
+      model_dir=model_dir,
+      use_cuda=gpu,
+    )
+    ```
+4. Change the `use_cuda=gpu` to `use_cuda=False`.
