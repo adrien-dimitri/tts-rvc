@@ -9,3 +9,4 @@ __pycache__/
 models/*/*.pt
 models/*
 /models
+/tmp
