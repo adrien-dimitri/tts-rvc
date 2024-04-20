@@ -51,7 +51,7 @@ How to use Coqui + RVC api?
 5. **Update the `config.toml` file:**
 
     - Update the `model_dir` path to the directory where the RVC v2 model is stored.
-    - Or set a `speaker_name` in the request body.
+    - Create a directory called `tmp` in the root directory. (This is where the generated audio files will be stored.)
 
 
 6. **Run the server:**
