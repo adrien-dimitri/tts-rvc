@@ -132,35 +132,37 @@ else:
     print("Error:", response.text)
 ```
 
+## Adjusting the TTS Parameters
 
-## Troubleshooting
+To adjust the parameters of the TTS model, you need to locate the `tts.py`  file which is located at `app/routers/tts.py` in line 22.
 
-If you encounter an error related to CUDA when using the TTS package, it may indicate that CUDA is not installed on your system. Here's what you can do to resolve the issue:
+### Changing the TTS Model
 
-### Error Message:
+Simply change the `model_name` parameter to the desired model name.
 
-```bash
- ...
-  File ".venv/lib/python3.10/site-packages/TTS/api.py", line 74, in __init__
-    self.load_tts_model_by_name(model_name, gpu)
-  File ".venv/lib/python3.10/site-packages/TTS/api.py", line 177, in load_tts_model_by_name
-    self.synthesizer = Synthesizer(
-  File ".venv/lib/python3.10/site-packages/TTS/utils/synthesizer.py", line 90, in __init__
-    assert torch.cuda.is_available(), "CUDA is not availabe on this machine."
-AssertionError: CUDA is not availabe on this machine.
+| model_name| language | gender |
+|------------|----------|--------|
+| tts_models/de/thorsten/tacotron2-DDC | de | male
+| tts_models/en/ljspeech/vits | en | female |
+
+
+
+### Activating CUDA
+
+To activate CUDA, change the `gpu` parameter to `True`.
+
+#### Example:
+
+The file should look like this:
+
+```python
+# Initialize TTS
+tts = TTS(model_name="tts_models/en/ljspeech/vits", progress_bar=True, gpu=False)
 ```
-The path may vary depending on the version of Python and the environment you are using.
 
-A very simple solution is to edit a file in the TTS Package:
-
-1. Navigate to the TTS package directory.
-2. Locate the `api.py` file.
-3. line 187 should look like this 
-    ```python
-      ...
-      encoder_config=None,
-      model_dir=model_dir,
-      use_cuda=gpu,
-    )
-    ```
-4. Change the `use_cuda=gpu` to `use_cuda=False`.
+Change it to:
+  
+```python
+# Initialize TTS
+tts = TTS(model_name="tts_models/en/ljspeech/vits", progress_bar=True, gpu=True)
+```
