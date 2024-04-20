@@ -134,7 +134,7 @@ else:
 
 ## Adjusting the TTS Parameters
 
-To adjust the parameters of the TTS model, you need to locate the `tts.py`  file which is located at `app/routers/tts.py` in line 22.
+To adjust the parameters of the TTS model, you need to locate the `tts.py`  file which can be found at `app/routers/tts.py` in line 22.
 
 ### Changing the TTS Model
 
