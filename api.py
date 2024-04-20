@@ -5,9 +5,9 @@ import time
 url = "http://127.0.0.1:8000/generate"
 
 payload = json.dumps({
-  "speaker_name": "kanye",
-  "input_text": "Hello, my name is Kanye West.",
-  "emotion": "Angry",  # happy,sad,angry,dull
+  "speaker_name": "freeman",
+  "input_text": "Willkommen im Virtual Reality AI Museum, in dem Technologie und Geschichte ineinandergreifen, um eine immersive Reise durch die Bereiche der künstlichen Intelligenz (AI) zu bieten.",
+  "emotion": "Dull",  # happy,sad,angry,dull
   "speed": 1.0  # 1.0 - 2.0
 })
 headers = {
