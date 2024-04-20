@@ -19,7 +19,7 @@ from structlog import get_logger
 
 
 # Initialize TTS
-tts = TTS(model_name="tts_models/en/ljspeech/vits", progress_bar=True, gpu=True)
+tts = TTS(model_name="tts_models/en/ljspeech/vits", progress_bar=True, gpu=False)
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 log = get_logger(__name__)
