@@ -142,8 +142,10 @@ Simply change the `model_name` parameter to the desired model name.
 
 | model_name| language | gender |
 |------------|----------|--------|
-| tts_models/de/thorsten/tacotron2-DDC | de | male
-| tts_models/en/ljspeech/vits | en | female |
+| tts_models/de/thorsten/tacotron2-DDC | de | male   |
+| tts_models/de/css10/vits-neon        | de | female |
+| tts_models/en/ljspeech/vits          | en | female |
+| tts_models/en/sam/tacotron-DDC       | en | male   |
 
 
 
