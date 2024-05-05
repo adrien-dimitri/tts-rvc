@@ -7,6 +7,5 @@ __pycache__/
 
 # models
 models/*/*.pt
-models/*
-/models
+/models/*
 /tmp
