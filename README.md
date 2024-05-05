@@ -39,20 +39,30 @@ How to use Coqui + RVC api?
     ```bash
     pip install -r requirements.txt
     pip install TTS
-    pip install dvc dvc-gdrive
     ```
 
-4. **Import the models using DVC:**
+4. **Download the hubert model from one of the following links and place it in the `models/hubert` folder:**
 
-    ```bash
-    dvc pull
+    [hubert_base.pt - Google Drive](https://drive.google.com/file/d/1taNFpawTzLnfAMCOGmNk9JZwXNF1qo-3/view?usp=drive_link) (recommended)
+
+    [hubert_base.pt - Hugging Face](https://huggingface.co/Timiii/hubert_base.pt/blob/main/hubert_base.pt)
+
+
+5. **Download a pretrained RVC model from the following link and place it in a folder in the `models/` folder:**
+
+    [RVC v2 model Archive](https://docs.google.com/spreadsheets/d/1tAUaQrEHYgRsm1Lvrnj14HFHDwJWl0Bd9x0QePewNco/edit#gid=1227575351)
+
+    You will get the `rvc_model.pth` and `rvc_model.index` files which you need to place in the `models/rvc_model_name` folder.
+
+    The folder structure should look like this:
+
+    ```python
+      /
+    └── models
+          └── rvc_model_name
+              ├── rvc_model.pth
+              └── rvc_model.index
     ```
-
-5. **Update the `config.toml` file:**
-
-    - Update the `model_dir` path to the directory where the RVC v2 model is stored.
-    - Create a directory called `tmp` in the root directory. (This is where the generated audio files will be stored.)
-
 
 6. **Run the server:**
 
@@ -60,19 +70,11 @@ How to use Coqui + RVC api?
     python -m uvicorn app.main:app
     ```
 
+7. **Run the `api.py` file:**
 
-## Information
-
-Where the RVC v2 model is mounted on the container at:
-
-```python
-  /
-└── models
-      └── speaker1
-          ├── speaker1.pth
-          └── speaker1.index
-```
-
+    ```bash
+    python api.py
+    ```
 
 ## POST REQUEST
 
