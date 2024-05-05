@@ -56,15 +56,15 @@ def server(
     log.info(f"took {generation_duration_s:.0f}s to generate audio")
 
     if rvc_speaker_id and rvc_model_dir:
-        hubert_model = None
-        hubert_path = huggingface_hub.hf_hub_download(
-            repo_id="lj1995/VoiceConversionWebUI",
-            filename="hubert_base.pt",
-            revision="1c75048c96f23f99da4b12909b532b5983290d7d",
-            local_dir="models/hubert/",
-            local_dir_use_symlinks=True,
-        )
-        hubert_model = load_hubert(hubert_path)
+        #hubert_model = None
+        #hubert_path = huggingface_hub.hf_hub_download(
+        #    repo_id="lj1995/VoiceConversionWebUI",
+        #    filename="hubert_base.pt",
+        #    revision="1c75048c96f23f99da4b12909b532b5983290d7d",
+        #    local_dir="models/hubert/",
+        #    local_dir_use_symlinks=True,
+        #)
+        hubert_model = load_hubert("models/hubert/hubert_base.pt")
         
         get_vc(rvc_speaker_id, rvc_model_dir, 0.33, 0.5)
         
