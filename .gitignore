@@ -8,4 +8,5 @@ __pycache__/
 # models
 models/*/*.pt
 /models/*
-/tmp
+!/models/hubert
+/tmp/*
