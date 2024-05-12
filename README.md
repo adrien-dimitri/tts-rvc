@@ -12,6 +12,8 @@ Coqui is a text-to-speech framework (vocoder and encoder), but cloning your own 
 
 How to use Coqui + RVC api?
 
+**IMPORTANT:** Make sure you are using Python 3.10 or lower.
+
 1. **Clone the repository**
 
     ```bash
@@ -40,15 +42,33 @@ How to use Coqui + RVC api?
     pip install -r requirements.txt
     pip install TTS
     ```
+4. Install the espeak backend for TTS:
 
-4. **Download the hubert model from one of the following links and place it in the `models/hubert` folder:**
+    Follow this guide on how to install the espeak backend for TTS: [espeak backend Installation Guide](https://github.com/espeak-ng/espeak-ng/blob/master/docs/guide.md)
+
+    More information can be found here: [espeak-ng](https://github.com/espeak-ng/espeak-ng/tree/master)
+
+5. Install FFmpeg CLI:
+
+    - On **Windows**, follow this guide: [FFmpeg Installation Guide](https://www.editframe.com/guides/how-to-install-and-start-using-ffmpeg-in-under-10-minutes)
+
+    - On **Linux**, simply run the following command:
+
+        ```bash
+        sudo apt-get install ffmpeg
+        ```
+    More information can be found here: [FFmpeg](https://www.ffmpeg.org/)
+
+6. Restart your PC.
+
+7. **Download the hubert model from one of the following links and place it in the `models/hubert` folder:**
 
     [hubert_base.pt - Google Drive](https://drive.google.com/file/d/1taNFpawTzLnfAMCOGmNk9JZwXNF1qo-3/view?usp=drive_link) (recommended)
 
     [hubert_base.pt - Hugging Face](https://huggingface.co/Timiii/hubert_base.pt/blob/main/hubert_base.pt)
 
 
-5. **Download a pretrained RVC model from the following link and place it in a folder in the `models/` folder:**
+8. **Download a pretrained RVC model from the following link and place it in a folder in the `models/` folder:**
 
     [RVC v2 model Archive](https://docs.google.com/spreadsheets/d/1tAUaQrEHYgRsm1Lvrnj14HFHDwJWl0Bd9x0QePewNco/edit#gid=1227575351)
 
@@ -64,13 +84,13 @@ How to use Coqui + RVC api?
               └── rvc_model.index
     ```
 
-6. **Run the server:**
+9. **Run the server:**
 
     ```bash
     python -m uvicorn app.main:app
     ```
 
-7. **Run the `api.py` file:**
+10. **Run the `api.py` file:**
 
     ```bash
     python api.py
